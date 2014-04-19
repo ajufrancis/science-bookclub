@@ -107,7 +107,7 @@ class Goodreads(object):
         response = self.request(method, params, action=action, stream=True, **kwargs)
         filepath = os.path.join(self.htdocs, filename)
         with open(filepath, 'wb') as f:
-            for chunk in response.iter_content(1024):
+            for chunk in response.iter_content(1024): #Chunks the fetched data so, that it does fill the memory.
                 f.write(chunk)
         return filepath
 
